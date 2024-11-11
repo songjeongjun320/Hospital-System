@@ -1,0 +1,7 @@
+{
+  "java.project.sourcePaths": ["hw2/src"],
+  "java.project.outputPath": "hw2/bin",
+  "java.project.referencedLibraries": [
+    "C:/Users/frank/Desktop/openjfx-23_windows-x64_bin-sdk/javafx-sdk-23/lib/*.jar"
+  ]
+}
