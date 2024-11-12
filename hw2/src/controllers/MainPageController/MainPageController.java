@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Random;
 
 import javafx.geometry.Insets;
@@ -139,7 +140,7 @@ public class MainPageController {
 
     // Saves patient information to a file
     private void savePatientInfo(int jun_patientID, String jun_firstName, String jun_lastName,
-                                 String jun_email, String jun_phoneNumber, String jun_healthHistory, String jun_insuranceID) {
+                                String jun_email, String jun_phoneNumber, String jun_healthHistory, String jun_insuranceID) {
         String jun_directoryPath = "hw2/db";
         File jun_directory = new File(jun_directoryPath);
         
@@ -148,6 +149,9 @@ public class MainPageController {
         }
 
         String jun_filePath = jun_directoryPath + "/" + jun_patientID + "_PatientInfo.txt";
+
+        // Calculate the future date (3 days from now)
+        LocalDate futureDate = LocalDate.now().plusDays(3);
 
         try (BufferedWriter jun_writer = new BufferedWriter(new FileWriter(jun_filePath))) {
             jun_writer.write("Patient ID: " + jun_patientID);
@@ -164,7 +168,7 @@ public class MainPageController {
             jun_writer.newLine();
             jun_writer.write("Insurance ID: " + jun_insuranceID);
             jun_writer.newLine();
-            jun_writer.write("Appointment Date: (Reserved)");
+            jun_writer.write("Appointment Date: " + futureDate);  // Store the future date
             System.out.println("File saved at: " + jun_filePath);
         } catch (IOException e) {
             System.err.println("Error saving patient information: " + e.getMessage());
